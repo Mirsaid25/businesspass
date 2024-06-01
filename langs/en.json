@@ -1,0 +1,120 @@
+{
+    "button": "Learn more",
+    "header": {
+        "links": {
+            "homePage": "Home",
+            "catalogPage": "Catalog",
+            "contacts": "Contacts"
+        },
+        "registerButton": "Register",
+        "loginButton": "Login"
+    },
+    "footer": {
+        "block1": "Download our app",
+        "block2": {
+            "spanText": "Still have questions?",
+            "form": {
+                "title": "Leave a request",
+                "inputNameLabel": "Your name",
+                "inputNamePlaseholder": "Nikolay Fedorov",
+                "inputGmailLabel": "Email",
+                "inputGmailPlaseholder": "name@email.com",
+                "submit": "Send",
+                "span": "By authorizing, you agree to the personal data processing policy"
+            },
+            "links": {
+                "menu": "Menu",
+                "homePage": "Home",
+                "catalogPage": "Catalog",
+                "contacts": "Contacts",
+                "networks": "Social networks"
+            }
+        }
+    },
+    "homePage": {
+        "section1": {
+            "span": "BusinessPass - Communicate with your idols",
+            "h1": "BUSINESSPASS - TIME WITH CELEBRITIES THAT ANYONE CAN HAVE",
+            "p1": "Book time with your favorite celebrities!",
+            "p2": "Cost varies depending on the celebrity and session duration.",
+            "button": "View celebrities",
+            "button2": "Learn more"
+        },
+        "banners": {
+            "linkAll": "All categories",
+            "searchButton": "Search"
+        },
+        "uniqueOffer": {
+            "title": "Unique offer",
+            "p": "Cars with unique prices. Be one of the first owners of unique cars with their features.",
+            "openCatalogButton": "Open catalog"
+        },
+        "roadmap": {
+            "span": "How it all works",
+            "h1": "How it works",
+            "p": "Stages that will help you book time with your favorite celebrity.",
+            "step": "STEP",
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Choosing a celebrity",
+                    "desc": "Browse our catalog and choose the celebrity you want to spend time with."
+                },
+                {
+                    "id": 2,
+                    "title": "Time booking",
+                    "desc": "Select a convenient time for communication and book it."
+                },
+                {
+                    "id": 3,
+                    "title": "Confirmation and payment",
+                    "desc": "Confirm the booking and make the payment."
+                }
+            ]
+        },
+        "profitableTerms": {
+            "p": "Company benefits",
+            "h1": "Profitable terms",
+            "span": "Choose your transportation wisely, as every day lived affects your time",
+            "button": "Fill out the form",
+            "data": [
+                {
+                    "title": "Special offers",
+                    "description": "Choose the car you want to rent"
+                },
+                {
+                    "title": "24/7 support",
+                    "description": "Choose the car you want to rent"
+                },
+                {
+                    "title": "Perfect condition of cars",
+                    "description": "Choose the car you want to rent"
+                },
+                {
+                    "title": "Low price",
+                    "description": "Choose the car you want to rent"
+                },
+                {
+                    "title": "24/7 support",
+                    "description": "Choose the car you want to rent"
+                }
+            ]
+        },
+        "faq": {
+            "title": "Frequently Asked Questions",
+            "desc": "What our users often encounter",
+            "data": [
+                {
+                    "id": 1,
+                    "question": "How can I buy time with a famous person?",
+                    "answer": "To buy time with a celebrity, simply choose the person of interest from our catalog, select the appropriate time package, and follow the payment instructions. After that, you can schedule a meeting and start communicating!"
+                },
+                {
+                    "id": 2,
+                    "question": "Which celebrities are available on your platform?",
+                    "answer": "We collaborate with a wide range of celebrities from various fields: from business tycoons and industry leaders to actors, athletes, and musicians. Our catalog is constantly updated, so don't forget to check for the availability of your idol!"
+                }
+            ]
+        }
+    }
+}
