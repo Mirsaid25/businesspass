@@ -21,8 +21,6 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import ChangeLanguage from "./changeLanguage";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { SingUpButton } from "./singUp/singUpButton";
-import { RegisterButton } from "./register/registerButton";
 import { deleteCookie, getCookie, hasCookie } from "cookies-next";
 import { IoCall } from "react-icons/io5";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
