@@ -49,7 +49,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
         let msg = `🆕 Бесплатная консультация! \n`;
         msg += `👨 Имя: ${data?.name} \n`;
         msg += `📞 Номер телефона: ${data?.number} \n`;
-        msg += `Сгласен: ${data?.check ? "Да":"Нет"} \n`;
+        msg += `Сгласен: ${data?.check ? "Да" : "Нет"} \n`;
 
         axios
             .post(URL, {
@@ -64,10 +64,10 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
                     });
                     setIsPending(false);
                     form.reset({
-                        check:false,
-                        name:"",
-                        number:""
-                    })
+                        check: false,
+                        name: "",
+                        number: "",
+                    });
                 }
             })
             .catch((err: any) => {
@@ -205,11 +205,9 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
                                                             }
                                                         />
                                                     </FormControl>
-                                                        <FormLabel>
-                                                            Use different
-                                                            settings for my
-                                                            mobile devices
-                                                        </FormLabel>
+                                                    <FormLabel>
+                                                        {translation.block2.form.span}
+                                                    </FormLabel>
                                                 </FormItem>
                                             )}
                                         />
