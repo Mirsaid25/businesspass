@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Form,
     FormControl,
+    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -22,39 +23,54 @@ import { useState } from "react";
 import axios from "axios";
 import { useToast } from "../ui/use-toast";
 import { useParams } from "next/navigation";
+import { Checkbox } from "../ui/checkbox";
 
 interface FooterProps {
-    translation: any
+    translation: any;
 }
+const URL = `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TOKEN}/sendMessage`;
 
 const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
     const [isPending, setIsPending] = useState(false);
     const { toast } = useToast();
 
-    const { lang } = useParams();
-
     const form = useForm<z.infer<typeof ApplicationSchema>>({
         resolver: zodResolver(ApplicationSchema),
         defaultValues: {
             name: "",
-            email: "",
+            number: "",
+            check: false,
         },
     });
 
     const onSubmit = (data: z.infer<typeof ApplicationSchema>) => {
         setIsPending(true);
 
+        let msg = `🆕 Бесплатная консультация! \n`;
+        msg += `👨 Имя: ${data?.name} \n`;
+        msg += `📞 Номер телефона: ${data?.number} \n`;
+        msg += `Сгласен: ${data?.check ? "Да":"Нет"} \n`;
+
         axios
-            .post(`${process.env.NEXT_PUBLIC_API_URL}/applications`, data)
-            .then((res:any) => {
+            .post(URL, {
+                chat_id: process.env.NEXT_PUBLIC_CHAT_ID,
+                parse_mode: "html",
+                text: msg,
+            })
+            .then((res: any) => {
                 if (res.status === 200 || res.status === 201) {
                     toast({
                         description: "Your message has been sent.",
                     });
                     setIsPending(false);
+                    form.reset({
+                        check:false,
+                        name:"",
+                        number:""
+                    })
                 }
             })
-            .catch((err:any) => {
+            .catch((err: any) => {
                 setIsPending(false);
                 toast({
                     variant: "destructive",
@@ -110,52 +126,6 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
                                     className="mt-28 max-lg:mt-5 max-xl:w-[370px] max-lg:w-full"
                                 />
                             </div>
-                            <div className="mt-16 max-md:mt-10 max-sm:mt-5 font-medium justify-between text-secondary gap-10 w-fit max-lg:flex hidden">
-                                <ul className="text-2xl max-xl:text-xl max-lg:text-lg max-md:text-base max-sm:text-sm">
-                                    <li className="text-4xl max-xl:text-3xl max-lg:text-2xl max-sm:text-xl mb-2 max-xl:mb-1">
-                                        Меню
-                                    </li>
-                                    <li className="mb-2 max-xl:mb-1">
-                                        <Link href={`/${lang}`}>Главная</Link>
-                                    </li>
-                                    <li className="mb-2 max-xl:mb-1">
-                                        <Link href={`/${lang}/catalog/1`}>
-                                            Каталог
-                                        </Link>
-                                    </li>
-                                </ul>
-                                <ul className="text-2xl max-xl:text-xl max-lg:text-lg max-md:text-base max-sm:text-sm">
-                                    <li className="text-4xl max-xl:text-3xl max-lg:text-2xl max-sm:text-xl mb-2 max-xl:mb-1">
-                                        Cоц сети
-                                    </li>
-                                    <li className="mb-2 max-xl:mb-1">
-                                        <Link href={"/"}>Инстаграм</Link>
-                                    </li>
-                                    <li className="mb-2 max-xl:mb-1">
-                                        <Link href={"/"}>Facebook</Link>
-                                    </li>
-                                    <li className="mb-2 max-xl:mb-1">
-                                        <Link href={"/"}>Telegram</Link>
-                                    </li>
-                                </ul>
-                                <div className="flex flex-col gap-2 max-xl:gap-1">
-                                    <h4 className="text-4xl max-xl:text-3xl max-lg:text-2xl max-sm:text-xl mb-4 max-xl:mb-1">
-                                        Контакты
-                                    </h4>
-                                    <Link
-                                        className="text-2xl max-xl:text-xl max-lg:text-lg max-md:text-base max-sm:text-sm"
-                                        href="tel:+998911233333"
-                                    >
-                                        +998911233333
-                                    </Link>
-                                    <Link
-                                        className="text-2xl max-xl:text-xl max-lg:text-lg max-md:text-base max-sm:text-sm"
-                                        href="mailto:royalpass@info.com"
-                                    >
-                                        royalpass@info.com
-                                    </Link>
-                                </div>
-                            </div>
                         </div>
                         <div className="w-[45%] max-sm:w-full max-lg:w-2/3">
                             <p className="text-xl max-md:text-lg max-sm:text-base text-secondary max-lg:block hidden">
@@ -197,7 +167,7 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
                                         />
                                         <FormField
                                             control={form.control}
-                                            name="email"
+                                            name="number"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-[#979797]">
@@ -211,12 +181,35 @@ const Footer: React.FunctionComponent<FooterProps> = ({ translation }) => {
                                                         <Input
                                                             {...field}
                                                             disabled={isPending}
-                                                            placeholder="name@email.com"
+                                                            placeholder="+1"
                                                             type={"string"}
                                                             className="bg-[#F3F3F3] border border-[#A1A1A1] p-5 rounded-[10px]"
                                                         />
                                                     </FormControl>
                                                     <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="check"
+                                            render={({ field }) => (
+                                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                                    <FormControl>
+                                                        <Checkbox
+                                                            checked={
+                                                                field.value
+                                                            }
+                                                            onCheckedChange={
+                                                                field.onChange
+                                                            }
+                                                        />
+                                                    </FormControl>
+                                                        <FormLabel>
+                                                            Use different
+                                                            settings for my
+                                                            mobile devices
+                                                        </FormLabel>
                                                 </FormItem>
                                             )}
                                         />

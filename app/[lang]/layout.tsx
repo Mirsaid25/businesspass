@@ -54,6 +54,7 @@ export default async function RootLayout({
         <html lang="en">
             <body className={"font-default"}>
                 {children}
+                <Toaster />
             </body>
         </html>
     );

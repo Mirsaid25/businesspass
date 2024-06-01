@@ -17,7 +17,7 @@
                 "title": "Leave a request",
                 "inputNameLabel": "Your name",
                 "inputNamePlaseholder": "Nikolay Fedorov",
-                "inputGmailLabel": "Email",
+                "inputGmailLabel": "Phone number",
                 "inputGmailPlaseholder": "name@email.com",
                 "submit": "Send",
                 "span": "By authorizing, you agree to the personal data processing policy"

@@ -17,7 +17,7 @@
                 "title": "Оставьте заявку",
                 "inputNameLabel": "Ваше имя",
                 "inputNamePlaseholder": "Николай Фёдоров",
-                "inputGmailLabel": "Электронная почта",
+                "inputGmailLabel": "Номер телефона",
                 "inputGmailPlaseholder": "name@email.com",
                 "submit": "Отправить",
                 "span": "Авторизуясь вы соглашаетесь с политикой обработки персональных данных"
